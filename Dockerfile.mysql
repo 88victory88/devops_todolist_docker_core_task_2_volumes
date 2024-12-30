@@ -1,0 +1,14 @@
+# Используем официальный образ MySQL
+FROM mysql:8.0
+
+# Установка ENV переменных для инициализации базы данных
+ENV MYSQL_DATABASE=app_db MYSQL_USER=app_user MYSQL_PASSWORD=1234 MYSQL_ROOT_PASSWORD=rootpassword
+
+# Указываем рабочую директорию (опционально)
+WORKDIR /docker-entrypoint-initdb.d
+
+# Копируем скрипты инициализации (если есть)
+# COPY ./init.sql /docker-entrypoint-initdb.d/
+
+# Завершаем Dockerfile
+EXPOSE 3306
